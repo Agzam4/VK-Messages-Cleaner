@@ -1,0 +1,281 @@
+﻿
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset='utf-8' />
+</head>
+<style>
+
+    body {
+        background: #EEE;
+        color: #315277;
+        /*text-shadow: 2px 2px 2px #999;*/
+    }
+
+    a {
+        display: inline-block;
+        width: 50px;
+        height: 50px;
+        border-radius: 20%;
+        background: #5181B8;
+        box-shadow: inset -2px -2px 0px #40648E;
+        opacity: 1;
+        transition: .13s ease-in-out;
+    }
+
+    .copyClass {
+        display: inline-block;
+        width: 50px;
+        height: 50px;
+        border-radius: 20%;
+        background: #E2CC7A;
+        box-shadow: inset -2px -2px 0px #B2A060;
+        opacity: 1;
+        transition: .13s ease-in-out;
+    }
+    .copyClass:hover {
+        display: inline-block;
+        width: 50px;
+        height: 50px;
+        border-radius: 20%;
+        background: #F2E1AB;
+        box-shadow: inset -2px -2px 0px #E2CC7A;
+        opacity: 1;
+        transition: .13s ease-in-out;
+    }
+
+	a:hover{ 
+	  display: inline-block;
+	  width: 50px;
+	  height: 50px;
+	  border-radius: 20%;
+	  background: #72B4FF;
+	  box-shadow: inset -2px -2px 0px #5181B8;	
+	  opacity: 1;
+	  transition: .1s ease-in-out;
+	}
+
+	.center{
+	  max-width: 500px;
+  	  display: flex;
+  	  justify-content: center;
+  	  position: absolute;
+  	  transform: translate(20%,75%); 
+	}
+
+	.center2{
+	  max-width: 500px;
+  	  display: flex;
+	  font-size: 25px;
+  	  justify-content: center;
+  	  position: absolute;
+  	  transform: translate(25%,20%); 
+	}
+
+	input[type=checkbox] {
+	  width: 17px;
+	  height: 17px;
+  	  position: absolute;
+  	  z-index: 10;
+  	  opacity: 0;
+	  transition: .1s ease-in-out;
+	}
+
+    input[type=text] {
+        width: 100px;
+        height: 15px;
+        opacity: 1;
+        transition: .2s ease-in-out;
+    }
+
+	input[type=text]:hover {
+      box-shadow: inset 0px -19px 0px #82c2f1;
+	  width: 100px;
+	  height: 15px;
+  	  opacity: 1;
+	  transition: .2s ease-in-out;	
+	}
+
+.custom-checkbox:not(:disabled):not(:checked)+label:hover::before {
+  border-color: #b3d7ff;
+}
+.custom-checkbox:not(:disabled):active+label::before {
+  background-color: #b3d7ff;
+  border-color: #b3d7ff;
+}
+.custom-checkbox:focus+label::before {
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+.custom-checkbox:focus:not(:checked)+label::before {
+  border-color: #80bdff;
+}
+.custom-checkbox:disabled+label::before {
+  background-color: #e9ecef;
+}
+.custom-checkbox+label {
+  display: inline-flex;
+  align-items: center;
+  user-select: none;
+}
+.custom-checkbox+label::before {
+  content: '';
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  flex-shrink: 0;
+  flex-grow: 0;
+  border: 1px solid #adb5bd;
+  border-radius: 0.25em;
+  margin-right: 0.5em;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 50% 50%;
+}
+.custom-checkbox:checked+label::before {
+  border-color: #0b76ef;
+  background-color: #0b76ef;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='%23fff' d='M6.564.75l-3.59 3.612-1.538-1.55L0 4.26 2.974 7.25 8 2.193z'/%3e%3c/svg%3e");
+}
+
+textarea{
+	  width: -200px;
+	  height: -100px;
+	  max-width: -200px;
+	  max-height: -100px;
+	  min-width: -200px;
+	  min-height: -100px;
+}
+
+hide{
+	  width: -10px;
+	  height: -10px;
+	  max-width: -10px;
+	  max-height: -10px;
+
+  	  opacity: 0;
+
+}
+
+    .copy_2 {
+        opacity: 0;
+        transition: .2s ease-in-out;
+    }
+</style>
+<body>
+	<h2>Message cleaner</h2>
+	<input type="text" name="key" id="id1" placeholder="id1" />
+	<input type="text" name="key" id="id2" placeholder="id2" />
+	<br />
+	<br />
+	<input type="checkbox" class="custom-checkbox" id="delFromAll" value="1" , checked="checked" />
+	<label for="delFromAll">Delete from All</label>
+	<br />
+	<br />
+	<a id='link' href="https://vk.com/dev/messages.delete" class="myherf">
+		<div class='center'>
+			<svg height="19" viewBox="0 0 34 19" width="34" xmlns="http://www.w3.org/2000/svg"><path d="m31.5584982 1.28655527c.2223912-.7416123.0000002-1.28655527-1.0584372-1.28655527h-3.5c-.8899347 0-1.3002074.47075088-1.5227219.98984863 0 0-1.7798696 4.33838569-4.3012897 7.15645072-.8157426.81574267-1.1865797 1.07529155-1.631547 1.07529155-.2224529 0-.5561938-.25954888-.5561938-1.00109946v-6.93393617c0-.88993476-.2465735-1.28655527-.9882476-1.28655527h-5.5c-.556132 0-.8905943.41303906-.8905943.80449184 0 .84364187 1.2606484 1.03819551 1.3905943 3.41135488v5.15412836c0 1.13002492-.2040763 1.33490212-.6490437 1.33490212-1.1865179 0-4.07272614-4.35776695-5.78451424-9.34419156-.33546923-.96918821-.67193969-1.36068564-1.56644202-1.36068564h-3.5c-1 0-1.20001221.47075088-1.20001221.98984863 0 .92703081 1.18657969 5.52496537 5.52490365 11.60606287 2.8921954 4.1529054 6.96710872 6.4040885 10.67510852 6.4040885 2.2247752 0 2.5-.5 2.5-1.3612483v-3.1387517c0-1 .2107621-1.1995723.9152784-1.1995723.5190977 0 1.4090325.2595489 3.4855469 2.2618712 2.3730977 2.3730977 2.7643343 3.4377011 4.0991747 3.4377011h3.5c1 0 1.5-.5 1.2115578-1.486722-.3156423-.9834253-1.4486683-2.4102444-2.9520878-4.1016239-.8158044-.9640651-2.0394184-2.0022606-2.4102555-2.5214818-.5190977-.6673585-.3707752-.96406514 0-1.55729326 0 0 4.2642554-6.00696708 4.7092227-8.04632377z" fill="#fff" fill-rule="evenodd" /></svg>
+		</div>
+	</a>
+
+	<!--class="myherf"-->
+	<a class='copyClass' id='copy' href="#">
+		<div class='center2'>
+			&#128221;
+		</div>
+	</a>
+	<div id="copy2" class="copy_2"><lable id="copy2l">&#10004; ID Copied</lable></div>
+	<br />
+	<br />
+	<hide>
+		<textarea id="result"></textarea>
+		<textarea id="untext"></textarea>
+	</hide>
+	<script type="text/javascript">
+		var input1 = document.getElementById('id1');//body.children[0];
+		var input2 = document.getElementById('id2');
+		var dfa1 = document.getElementById('delFromAll');
+		var copy1 = document.getElementById('copy');
+		var textarea1 = document.getElementById('result');
+
+		copy1.onclick = function () {
+			var text = document.getElementById('result');
+			text.select();
+			document.execCommand("copy");
+			text.value += ' ';
+            text.value = textarea1.value.slice(0, -1);
+
+            setCopy2(1, 'copyed');
+		}
+
+        function setCopy2(valueOfOpacity, text) {
+            copy2 = document.getElementById('copy2');
+            copy2.style.opacity = valueOfOpacity;
+			document.getElementById('copy2l').text = '&#10004 ' + text;
+            //hide('copy2');
+            setTimeout(hide, 2500, 'copy2');
+		}
+
+        function hide(e) {
+            copy2 = document.getElementById(e);
+            copy2.style.opacity = '0';
+        }
+
+
+		input1.oninput = function () {
+			go();
+		};
+		input2.oninput = function () {
+			go();
+		};
+		dfa1.onclick = function () {
+			go();
+		}
+
+		function go() {
+
+			var myId1 = document.getElementById('id1');
+			var myId2 = document.getElementById('id2');
+
+			var str = '';
+			var urlStr = 'https://vk.com/dev/messages.delete?params[message_ids]=';
+			var min;
+
+			var iid1 = parseInt(myId1.value);
+			var iid2 = parseInt(myId2.value);
+
+			var max;
+			if (iid1 < iid2) {
+				min = iid1;
+				max = iid2;
+			} else {
+				min = iid2;
+				max = iid1;
+			}
+
+
+			for (i = min; i < max; i++) {
+				str += i + ',';
+				urlStr += i + '%2C';
+			}
+
+			str += max;
+			urlStr += max + '&params[spam]=0&params[delete_for_all]=';
+			var dfa = document.getElementById('delFromAll');
+			if (dfa.checked) {
+				urlStr += '1';
+			} else {
+				urlStr += '0';
+			}
+			urlStr += '&params[v]=5.124';
+			document.getElementById('result').innerHTML = str;
+
+			var myH = document.getElementById('link');
+			myH.setAttribute('href', urlStr);
+
+            setCopy2(0, '');
+		}
+	</script>
+	<br />
+</body> 
+</html>
